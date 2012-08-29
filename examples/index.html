@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script src="../jquery-peekaboo.js"></script>
+  </head>
+  <style>
+  body { height: 4000px; }
+  .boxes { position: absolute; width: 100px; height: 100px; z-index: 1; opacity: .6 }
+  .box-01 { top: 1000px; left: 100px; background-color: red; }
+  .box-02 { top: 1500px; left: 300px; background-color: green; }
+  .box-03 { top: 2000px; left: 500px; background-color: blue; }
+  .box-04 { top: 2500px; left: 700px; background-color: black; }
+  </style>
+  <script>
+    $(function() {
+      $('.boxes').peekaboo();
+
+      $('.boxes').on('appear disappear', function(e) {
+        console.log(this, arguments);
+      });
+    });
+  </script>
+  <body>
+    <h1>Scroll to bottom</h1>
+    <div class="boxes box-01"></div>
+    <div class="boxes box-02"></div>
+    <div class="boxes box-03"></div>
+    <div class="boxes box-04"></div>
+  </body>
+</html>
