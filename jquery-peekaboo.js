@@ -10,7 +10,9 @@
 (function(window, document, $) {
 
   var $window = $(window)
-    , els = [];
+    , els = []
+    , appears = []
+    , disappears = [];
 
   $.fn.peekaboo = function(options) {
     return this.each(function() {
@@ -23,10 +25,14 @@
       var $elem = $(this);
       if ($window.scrollTop() < $elem.offset().top + $elem.height()
         && $elem.offset().top < $window.scrollTop() + $window.height()) {
-        $elem.trigger('appear', e);
+        if ('appeared' !== $elem.data('pkb-state')) {
+          $elem.data('pkb-state', 'appeared').trigger('appear', e);
+        }
       }
       else {
-        $elem.trigger('disappear', e);
+        if ('disappeared' !== $elem.data('pkb-state')) {
+          $elem.data('pkb-state', 'disappeared').trigger('disappear', e);
+        }
       }
     });
   });
