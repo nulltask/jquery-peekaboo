@@ -16,7 +16,7 @@ jQuery(function() {
   $('.boxes').peekaboo();
   
   $('.boxes').on('appear disappear', function(e) {
-    console.log(this, arguments);
+    console.log(this, $(this).data('pkb-state'));
   });
 });
 ```
