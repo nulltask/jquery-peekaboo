@@ -11,19 +11,31 @@
 (function(window, document, $) {
 
   var $window = $(window)
-    , els = []
-    , appears = []
-    , disappears = [];
+    , els = [];
 
   $.fn.peekaboo = function(options) {
+    var args = [].slice.call(arguments);
+    
+    options = options || {};
+
+    if (args.length && 'function' === typeof args[0]) {
+      options = {
+          onAppear: args[0]
+        , onDisappear: args[1]
+      };
+    }
+
     return this.each(function() {
-      els.push(this);
+      els.push($(this)
+        .on('appear', options.onAppear || $.noop)
+        .on('disappear', options.onDisappear || $.noop)
+      );
     });
   };
   
   $window.on('scroll.peekaboo resize.peekaboo', function(e) {
     $.each(els, function() {
-      var $elem = $(this);
+      var $elem = this;
       if ($window.scrollTop() < $elem.offset().top + $elem.height()
         && $elem.offset().top < $window.scrollTop() + $window.height()) {
         if ('appeared' !== $elem.data('pkb-state')) {
