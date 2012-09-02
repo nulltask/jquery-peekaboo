@@ -4,6 +4,7 @@
  *
  * @dependency jQuery 1.7+
  * @author Uniba Inc.
+ * @link https://github.com/uniba/jquery-peekaboo
  * @license MIT License
  */
 
@@ -20,7 +21,7 @@
     });
   };
   
-  $window.on('scroll resize', function(e) {
+  $window.on('scroll.peekaboo resize.peekaboo', function(e) {
     $.each(els, function() {
       var $elem = $(this);
       if ($window.scrollTop() < $elem.offset().top + $elem.height()
