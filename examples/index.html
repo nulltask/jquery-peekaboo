@@ -14,7 +14,11 @@
   </style>
   <script>
     $(function() {
-      $('.boxes').peekaboo();
+      $('.boxes').peekaboo(function() {
+        console.log('boo!'); 
+      }, function() {
+        console.log('peek-a...')
+      });
 
       $('.boxes').on('appear disappear', function(e) {
         console.log(this, $(this).data('pkb-state'));

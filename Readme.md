@@ -13,7 +13,19 @@
 
 ```javascript
 jQuery(function() {
-  $('.boxes').peekaboo();
+  /**
+   * Take appear or disappear callbacks.
+   */
+
+  $('.boxes').peekaboo(function() {
+    // on appear callback
+  }, function() {
+    // on disappear callback
+  });
+  
+  /**
+   * peekaboo triggers appear or disappear events.
+   */
   
   $('.boxes').on('appear disappear', function(e) {
     console.log(this, $(this).data('pkb-state'));
