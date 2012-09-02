@@ -13,14 +13,17 @@
 
 ```javascript
 jQuery(function() {
+
   /**
    * Take appear or disappear callbacks.
    */
 
   $('.boxes').peekaboo(function() {
     // on appear callback
+    console.log('boo!');
   }, function() {
     // on disappear callback
+    console.log('peek-a...');
   });
   
   /**
