@@ -12,11 +12,26 @@
 <h2>Usage</h2>
 
 <p>```javascript
-jQuery(function() {
-  $(&#39;.boxes&#39;).peekaboo();</p>
+jQuery(function() {</p>
+
+<p>/**
+   * Take appear or disappear callbacks.
+   */</p>
+
+<p>$(&#39;.boxes&#39;).peekaboo(function() {
+    // on appear callback
+    console.log(&#39;boo!&#39;);
+  }, function() {
+    // on disappear callback
+    console.log(&#39;peek-a...&#39;);
+  });</p>
+
+<p>/**
+   * peekaboo triggers appear or disappear events.
+   */</p>
 
 <p>$(&#39;.boxes&#39;).on(&#39;appear disappear&#39;, function(e) {
-    console.log(this, arguments);
+    console.log(this, $(this).data(&#39;pkb-state&#39;));
   });
 });
 ```</p>
