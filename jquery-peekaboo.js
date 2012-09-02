@@ -1,6 +1,6 @@
 
 /*!
- * jQuery Peekaboo 0.0.2
+ * jQuery Peekaboo 0.1.0
  *
  * @dependency jQuery 1.7+
  * @author Uniba Inc.
